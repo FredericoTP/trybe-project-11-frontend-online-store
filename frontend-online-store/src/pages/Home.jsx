@@ -1,11 +1,21 @@
 import React from 'react';
 import Header from '../components/Header';
-import { getCategories } from '../services/api';
+import CardProduct from '../components/CardProduct';
+import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
 class Home extends React.Component {
-  state = {
-    categories: [],
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      categories: [],
+      inputSearch: '',
+      returnQuery: [],
+      findReturnQuery: false,
+    };
+
+    this.getProductQuery = this.getProductQuery.bind(this);
+  }
 
   async componentDidMount() {
     const categories = await getCategories();
@@ -15,11 +25,44 @@ class Home extends React.Component {
     });
   }
 
+  handleChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  onClick = () => {
+    this.getProductQuery();
+  };
+
+  async getProductQuery() {
+    const { inputSearch } = this.state;
+    const response = await getProductsFromCategoryAndQuery('', inputSearch);
+    if (response.results.length > 0) {
+      this.setState({
+        returnQuery: response.results,
+        findReturnQuery: false,
+      });
+    } else {
+      this.setState({
+        returnQuery: response.results,
+        findReturnQuery: true,
+      });
+    }
+  }
+
   render() {
-    const { categories } = this.state;
+    const { categories, inputSearch, returnQuery, findReturnQuery } = this.state;
     return (
       <div>
-        <Header />
+        <Header
+          inputSearch={ inputSearch }
+          handleChange={ this.handleChange }
+          onClick={ this.onClick }
+        />
         <div>
           {
             categories.map((category) => {
@@ -43,6 +86,26 @@ class Home extends React.Component {
           >
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
+        </div>
+        <div>
+          {
+            findReturnQuery ? (<p>Nenhum produto foi encontrado</p>)
+              : (
+                returnQuery.map((product) => {
+                  const { id, price, thumbnail, title } = product;
+                  return (
+                    <div key={ `${id}${title}` }>
+                      <CardProduct
+                        id={ id }
+                        price={ price }
+                        thumbnail={ thumbnail }
+                        title={ title }
+                      />
+                    </div>
+                  );
+                })
+              )
+          }
         </div>
       </div>
     );
