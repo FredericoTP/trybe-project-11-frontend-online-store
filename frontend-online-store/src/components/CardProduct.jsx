@@ -8,7 +8,11 @@ class CardProduct extends React.Component {
       <div data-testid="product">
         <img src={ thumbnail } alt={ title } />
         <p>{ title }</p>
-        <p>{ price }</p>
+        <p>
+          R$
+          {' '}
+          { price }
+        </p>
       </div>
     );
   }

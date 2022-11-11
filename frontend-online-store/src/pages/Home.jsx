@@ -15,6 +15,7 @@ class Home extends React.Component {
     };
 
     this.getProductQuery = this.getProductQuery.bind(this);
+    this.getProductCategory = this.getProductCategory.bind(this);
   }
 
   async componentDidMount() {
@@ -54,6 +55,17 @@ class Home extends React.Component {
     }
   }
 
+  onClickCategories = ({ target }) => {
+    this.getProductCategory(target.value);
+  };
+
+  async getProductCategory(id) {
+    const response = await getProductsFromCategoryAndQuery(id, '');
+    this.setState({
+      returnQuery: response.results,
+    });
+  }
+
   render() {
     const { categories, inputSearch, returnQuery, findReturnQuery } = this.state;
     return (
@@ -72,6 +84,8 @@ class Home extends React.Component {
                   <button
                     data-testid="category"
                     type="button"
+                    onClick={ this.onClickCategories }
+                    value={ id }
                   >
                     { name }
                   </button>
