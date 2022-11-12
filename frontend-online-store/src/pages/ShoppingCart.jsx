@@ -13,10 +13,12 @@ class ShoppingCart extends React.Component {
     if (!localStorage.getItem('cart')) {
       localStorage.setItem('cart', []);
     }
-    const cartItens = JSON.parse(localStorage.getItem('cart'));
-    this.setState({
-      itens: cartItens,
-    });
+    if (localStorage.getItem('cart').length > 0) {
+      const cartItens = JSON.parse(localStorage.getItem('cart'));
+      this.setState({
+        itens: cartItens,
+      });
+    }
   }
 
   render() {
