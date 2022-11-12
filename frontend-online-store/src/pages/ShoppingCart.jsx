@@ -21,6 +21,13 @@ class ShoppingCart extends React.Component {
     }
   }
 
+  updateComponent = () => {
+    const cartItens = JSON.parse(localStorage.getItem('cart'));
+    this.setState({
+      itens: cartItens,
+    });
+  };
+
   render() {
     const { itens } = this.state;
     return (
@@ -28,7 +35,13 @@ class ShoppingCart extends React.Component {
         {
           (itens.length > 0)
             ? (
-              itens.map((item) => <CardProductShopping key={ item.id } item={ item } />)
+              itens.map((item) => (
+                <CardProductShopping
+                  key={ item.id }
+                  item={ item }
+                  updateComponent={ this.updateComponent }
+                />
+              ))
             )
             : (<p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>)
         }
