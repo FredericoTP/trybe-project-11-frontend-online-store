@@ -12,6 +12,7 @@ class ProductDetails extends React.Component {
       productResult: [],
       picture: '',
       loading: true,
+      count: 0,
     };
   }
 
@@ -19,6 +20,7 @@ class ProductDetails extends React.Component {
     const { match } = this.props;
     const { id } = match.params;
     const response = await getProductById(id);
+    this.countItens();
     this.setState({
       id,
       productResult: response,
@@ -40,6 +42,21 @@ class ProductDetails extends React.Component {
         localStorage.setItem('cart', JSON.stringify(cartAdd));
       }
     }
+    this.countItens();
+  };
+
+  countItens = () => {
+    const cart = localStorage.getItem('cart');
+    if (cart) {
+      let sum = 0;
+      JSON.parse(cart).forEach((item) => {
+        const { quantity } = item;
+        sum += quantity;
+        this.setState({
+          count: sum,
+        });
+      });
+    }
   };
 
   render() {
@@ -48,19 +65,20 @@ class ProductDetails extends React.Component {
       picture,
       id,
       loading,
+      count,
     } = this.state;
     const { title, price, warranty } = productResult;
     if (loading) {
       return (
         <div>
-          <HeaderDetails />
+          <HeaderDetails count={ count } />
           <p>Loading...</p>
         </div>
       );
     }
     return (
       <div>
-        <HeaderDetails />
+        <HeaderDetails count={ count } />
         <div>
           <img
             data-testid="product-detail-image"

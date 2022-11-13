@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class CardProduct extends React.Component {
   onClick = () => {
-    const { id, price, thumbnail, title } = this.props;
+    const { id, price, thumbnail, title, countItens } = this.props;
     const cart = { id, price, thumbnail, title, quantity: 1 };
     if (!localStorage.getItem('cart')) {
       localStorage.setItem('cart', JSON.stringify([cart]));
@@ -15,6 +15,7 @@ class CardProduct extends React.Component {
         localStorage.setItem('cart', JSON.stringify(cartAdd));
       }
     }
+    countItens();
   };
 
   render() {
@@ -51,6 +52,7 @@ CardProduct.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  countItens: PropTypes.func.isRequired,
 };
 
 export default CardProduct;
