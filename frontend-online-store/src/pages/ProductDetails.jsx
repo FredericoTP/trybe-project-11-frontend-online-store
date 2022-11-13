@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getProductById } from '../services/api';
 import HeaderDetails from '../components/HeaderDetails';
+import FormDetails from '../components/FormDetails';
 
 class ProductDetails extends React.Component {
   constructor() {
     super();
     this.state = {
+      id: '',
       productResult: [],
       picture: '',
+      loading: true,
     };
   }
 
@@ -17,8 +20,10 @@ class ProductDetails extends React.Component {
     const { id } = match.params;
     const response = await getProductById(id);
     this.setState({
+      id,
       productResult: response,
       picture: response.pictures[0].url,
+      loading: false,
     });
   }
 
@@ -38,8 +43,21 @@ class ProductDetails extends React.Component {
   };
 
   render() {
-    const { productResult, picture } = this.state;
+    const {
+      productResult,
+      picture,
+      id,
+      loading,
+    } = this.state;
     const { title, price, warranty } = productResult;
+    if (loading) {
+      return (
+        <div>
+          <HeaderDetails />
+          <p>Loading...</p>
+        </div>
+      );
+    }
     return (
       <div>
         <HeaderDetails />
@@ -63,6 +81,11 @@ class ProductDetails extends React.Component {
           >
             Adicionar ao Carrinho
           </button>
+        </div>
+        <div>
+          <FormDetails
+            id={ id }
+          />
         </div>
       </div>
     );
