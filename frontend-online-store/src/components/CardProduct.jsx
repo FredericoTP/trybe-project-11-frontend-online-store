@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 class CardProduct extends React.Component {
   onClick = () => {
-    const { id, price, thumbnail, title, countItens } = this.props;
-    const cart = { id, price, thumbnail, title, quantity: 1 };
+    const { id, price, thumbnail, title, countItens, availableQuantity } = this.props;
+    const cart = { id, price, thumbnail, title, quantity: 1, availableQuantity };
     if (!localStorage.getItem('cart')) {
       localStorage.setItem('cart', JSON.stringify([cart]));
     } else {
@@ -53,6 +53,7 @@ CardProduct.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   countItens: PropTypes.func.isRequired,
+  availableQuantity: PropTypes.number.isRequired,
 };
 
 export default CardProduct;

@@ -56,18 +56,21 @@ class CardProductShopping extends React.Component {
   };
 
   onClickIncrease = () => {
+    const { itemQuantity } = this.state;
     const { item } = this.props;
-    const { id, thumbnail, title, price } = item;
-    this.setState((prevState) => ({
-      cart: {
-        id,
-        thumbnail,
-        title,
-        price,
-        quantity: prevState.cart.quantity + 1,
-      },
-      itemQuantity: prevState.itemQuantity + 1,
-    }));
+    const { id, thumbnail, title, price, availableQuantity } = item;
+    if (itemQuantity < availableQuantity) {
+      this.setState((prevState) => ({
+        cart: {
+          id,
+          thumbnail,
+          title,
+          price,
+          quantity: prevState.cart.quantity + 1,
+        },
+        itemQuantity: prevState.itemQuantity + 1,
+      }));
+    }
   };
 
   onClickRemove = () => {
@@ -134,6 +137,7 @@ CardProductShopping.propTypes = {
     title: PropTypes.string,
     quantity: PropTypes.number,
     id: PropTypes.string,
+    availableQuantity: PropTypes.number,
   }).isRequired,
   updateComponent: PropTypes.func.isRequired,
 };

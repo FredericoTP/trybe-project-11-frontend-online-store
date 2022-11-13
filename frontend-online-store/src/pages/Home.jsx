@@ -122,7 +122,13 @@ class Home extends React.Component {
             findReturnQuery ? (<p>Nenhum produto foi encontrado</p>)
               : (
                 returnQuery.map((product) => {
-                  const { id, price, thumbnail, title } = product;
+                  const {
+                    id,
+                    price,
+                    thumbnail,
+                    title,
+                    available_quantity: availableQuantity,
+                  } = product;
                   return (
                     <div key={ `${id}${title}` }>
                       <CardProduct
@@ -131,6 +137,7 @@ class Home extends React.Component {
                         thumbnail={ thumbnail }
                         title={ title }
                         countItens={ this.countItens }
+                        availableQuantity={ availableQuantity }
                       />
                     </div>
                   );
