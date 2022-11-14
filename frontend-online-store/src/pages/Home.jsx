@@ -128,6 +128,7 @@ class Home extends React.Component {
                     thumbnail,
                     title,
                     available_quantity: availableQuantity,
+                    shipping,
                   } = product;
                   return (
                     <div key={ `${id}${title}` }>
@@ -138,6 +139,7 @@ class Home extends React.Component {
                         title={ title }
                         countItens={ this.countItens }
                         availableQuantity={ availableQuantity }
+                        shipping={ shipping.free_shipping }
                       />
                     </div>
                   );

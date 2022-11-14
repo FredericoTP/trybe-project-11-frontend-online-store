@@ -31,8 +31,14 @@ class ProductDetails extends React.Component {
 
   onClick = () => {
     const { productResult } = this.state;
-    const { id, price, thumbnail, title } = productResult;
-    const cart = { id, price, thumbnail, title, quantity: 1 };
+    const {
+      id,
+      price,
+      thumbnail,
+      title,
+      available_quantity: availableQuantity,
+    } = productResult;
+    const cart = { id, price, thumbnail, title, quantity: 1, availableQuantity };
     if (!localStorage.getItem('cart')) {
       localStorage.setItem('cart', JSON.stringify([cart]));
     } else {
@@ -67,7 +73,7 @@ class ProductDetails extends React.Component {
       loading,
       count,
     } = this.state;
-    const { title, price, warranty } = productResult;
+    const { title, price, warranty, shipping } = productResult;
     if (loading) {
       return (
         <div>
@@ -91,6 +97,11 @@ class ProductDetails extends React.Component {
             { ' ' }
             { price }
           </p>
+          {
+            shipping.free_shipping ? (
+              <p data-testid="free-shipping">Frete Grátis</p>
+            ) : null
+          }
           <p>{ warranty }</p>
           <button
             data-testid="product-detail-add-to-cart"

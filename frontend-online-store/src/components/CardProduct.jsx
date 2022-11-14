@@ -4,7 +4,14 @@ import { Link } from 'react-router-dom';
 
 class CardProduct extends React.Component {
   onClick = () => {
-    const { id, price, thumbnail, title, countItens, availableQuantity } = this.props;
+    const {
+      id,
+      price,
+      thumbnail,
+      title,
+      countItens,
+      availableQuantity,
+    } = this.props;
     const cart = { id, price, thumbnail, title, quantity: 1, availableQuantity };
     if (!localStorage.getItem('cart')) {
       localStorage.setItem('cart', JSON.stringify([cart]));
@@ -19,7 +26,7 @@ class CardProduct extends React.Component {
   };
 
   render() {
-    const { id, price, thumbnail, title } = this.props;
+    const { id, price, thumbnail, title, shipping } = this.props;
     return (
       <div data-testid="product">
         <img src={ thumbnail } alt={ title } />
@@ -29,6 +36,11 @@ class CardProduct extends React.Component {
           {' '}
           { price }
         </p>
+        {
+          shipping ? (
+            <p data-testid="free-shipping">Frete Grátis</p>
+          ) : null
+        }
         <Link
           data-testid="product-detail-link"
           to={ `/productdetails/${id}` }
@@ -54,6 +66,7 @@ CardProduct.propTypes = {
   id: PropTypes.string.isRequired,
   countItens: PropTypes.func.isRequired,
   availableQuantity: PropTypes.number.isRequired,
+  shipping: PropTypes.bool.isRequired,
 };
 
 export default CardProduct;
