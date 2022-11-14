@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class HeaderDetails extends React.Component {
   render() {
+    const { count } = this.props;
     return (
       <header>
         <div>
@@ -18,10 +20,15 @@ class HeaderDetails extends React.Component {
           >
             Carrinho
           </Link>
+          <p data-testid="shopping-cart-size">{ count }</p>
         </div>
       </header>
     );
   }
 }
+
+HeaderDetails.propTypes = {
+  count: PropTypes.number.isRequired,
+};
 
 export default HeaderDetails;

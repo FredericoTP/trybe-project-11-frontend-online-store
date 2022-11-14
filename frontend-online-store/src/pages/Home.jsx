@@ -12,6 +12,7 @@ class Home extends React.Component {
       inputSearch: '',
       returnQuery: [],
       findReturnQuery: false,
+      count: 0,
     };
 
     this.getProductQuery = this.getProductQuery.bind(this);
@@ -20,10 +21,10 @@ class Home extends React.Component {
 
   async componentDidMount() {
     const categories = await getCategories();
-
     this.setState({
       categories,
     });
+    this.countItens();
   }
 
   handleChange = ({ target }) => {
@@ -66,14 +67,29 @@ class Home extends React.Component {
     });
   }
 
+  countItens = () => {
+    const cart = localStorage.getItem('cart');
+    if (cart) {
+      let sum = 0;
+      JSON.parse(cart).forEach((item) => {
+        const { quantity } = item;
+        sum += quantity;
+        this.setState({
+          count: sum,
+        });
+      });
+    }
+  };
+
   render() {
-    const { categories, inputSearch, returnQuery, findReturnQuery } = this.state;
+    const { categories, inputSearch, returnQuery, findReturnQuery, count } = this.state;
     return (
       <div>
         <Header
           inputSearch={ inputSearch }
           handleChange={ this.handleChange }
           onClick={ this.onClick }
+          count={ count }
         />
         <div>
           {
@@ -106,7 +122,14 @@ class Home extends React.Component {
             findReturnQuery ? (<p>Nenhum produto foi encontrado</p>)
               : (
                 returnQuery.map((product) => {
-                  const { id, price, thumbnail, title } = product;
+                  const {
+                    id,
+                    price,
+                    thumbnail,
+                    title,
+                    available_quantity: availableQuantity,
+                    shipping,
+                  } = product;
                   return (
                     <div key={ `${id}${title}` }>
                       <CardProduct
@@ -114,6 +137,9 @@ class Home extends React.Component {
                         price={ price }
                         thumbnail={ thumbnail }
                         title={ title }
+                        countItens={ this.countItens }
+                        availableQuantity={ availableQuantity }
+                        shipping={ shipping.free_shipping }
                       />
                     </div>
                   );
