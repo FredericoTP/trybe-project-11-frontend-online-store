@@ -5,6 +5,25 @@
   min-height: 100vh;
 }
 
+.cart-product-container {
+  border: 2px solid black;
+  border-radius: 7px;
+  max-height: 500px;
+  margin: 20px auto;
+  overflow-y: scroll;
+  width: 90%;
+}
+
+.cart-product-container::-webkit-scrollbar{
+	width: 6px;
+	background-color: #ffffff;
+}
+
+.cart-product-container::-webkit-scrollbar-thumb{
+	border-radius:0;
+	background-color: #000000;
+}
+
 .shopping-checkout {
   display: flex;
   margin: 0 auto;

@@ -8,6 +8,7 @@ class CardProductShopping extends React.Component {
     this.state = {
       cart: [],
       itemQuantity: 0,
+      disable: false,
     };
   }
 
@@ -76,6 +77,11 @@ class CardProductShopping extends React.Component {
       }));
       countItensIncreaseDecrease('increase')
     }
+    if (itemQuantity === availableQuantity) {
+      this.setState({
+        disable: true,
+      })
+    }
   };
 
   onClickRemove = () => {
@@ -94,7 +100,7 @@ class CardProductShopping extends React.Component {
   };
 
   render() {
-    const { itemQuantity } = this.state;
+    const { itemQuantity, disable } = this.state;
     const { item } = this.props;
     const { price, thumbnail, title } = item;
 
@@ -129,6 +135,7 @@ class CardProductShopping extends React.Component {
               data-testid="product-increase-quantity"
               type="button"
               onClick={ this.onClickIncrease }
+              disabled={ disable }
             >
               +
             </button>

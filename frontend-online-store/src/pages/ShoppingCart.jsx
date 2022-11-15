@@ -82,7 +82,7 @@ class ShoppingCart extends React.Component {
     return (
       <div className="cart-container">
         <HeaderShoppingCart count={ count } />
-        <div>
+        <div className="cart-product-container">
           {
             (itens.length > 0)
               ? (
