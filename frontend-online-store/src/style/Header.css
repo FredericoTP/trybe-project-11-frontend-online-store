@@ -55,11 +55,15 @@
 }
 
 .number-cart-itens {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: yellow;
   border-radius: 100%;
   color: black;
+  height: 30px;
   position: relative;
-  right: 60px;
+  right: 65px;
   top: 20px;
-  width: 25px;
+  width: 30px;
 }

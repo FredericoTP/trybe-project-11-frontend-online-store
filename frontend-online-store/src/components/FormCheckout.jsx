@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import '../style/FormCheckout.css';
 
 class FormCheckout extends React.Component {
   constructor() {
@@ -60,12 +61,16 @@ class FormCheckout extends React.Component {
   render() {
     const { name, email, cpf, phone, cep, address, errorMsg, succeeded } = this.state;
     return (
-      <div>
-        <fieldset>
-          <legend>Informações do Comprador</legend>
-          <label htmlFor="checkout-fullname">
-            Nome Completo
+      <div className="form-checkout">
+        <form className="row g-3">
+          <legend className="legend-checkout">Informações do Comprador</legend>
+          <div className="col-md-6">
+            <label className="form-label checkout-textbold" htmlFor="checkout-fullname">
+              Nome Completo
+            </label>
             <input
+              placeholder="Nome"
+              className="form-control"
               id="checkout-fullname"
               data-testid="checkout-fullname"
               type="text"
@@ -73,10 +78,14 @@ class FormCheckout extends React.Component {
               value={ name }
               onChange={ this.handleChange }
             />
-          </label>
-          <label htmlFor="checkout-email">
-            Email
+          </div>
+          <div className="col-md-6">
+            <label className="form-label checkout-textbold" htmlFor="checkout-email">
+              Email
+            </label>
             <input
+              placeholder="Email"
+              className="form-control"
               id="checkout-email"
               data-testid="checkout-email"
               type="text"
@@ -84,10 +93,14 @@ class FormCheckout extends React.Component {
               value={ email }
               onChange={ this.handleChange }
             />
-          </label>
-          <label htmlFor="checkout-cpf">
-            CPF
+          </div>
+          <div className="col-md-4">
+            <label className="form-label checkout-textbold" htmlFor="checkout-cpf">
+              CPF
+            </label>
             <input
+              placeholder="Somente numeração"
+              className="form-control"
               id="checkout-cpf"
               data-testid="checkout-cpf"
               type="text"
@@ -95,10 +108,14 @@ class FormCheckout extends React.Component {
               value={ cpf }
               onChange={ this.handleChange }
             />
-          </label>
-          <label htmlFor="checkout-phone">
-            Telefone
+          </div>
+          <div className="col-md-4">
+            <label className="form-label checkout-textbold" htmlFor="checkout-phone">
+              Telefone
+            </label>
             <input
+              placeholder="Telefone"
+              className="form-control"
               id="checkout-phone"
               data-testid="checkout-phone"
               type="text"
@@ -106,10 +123,14 @@ class FormCheckout extends React.Component {
               value={ phone }
               onChange={ this.handleChange }
             />
-          </label>
-          <label htmlFor="checkout-cep">
-            CEP
+          </div>
+          <div className="col-md-4">
+            <label className="form-label checkout-textbold" htmlFor="checkout-cep">
+              CEP
+            </label>
             <input
+              placeholder="CEP"
+              className="form-control"
               id="checkout-cep"
               data-testid="checkout-cep"
               type="text"
@@ -117,10 +138,14 @@ class FormCheckout extends React.Component {
               value={ cep }
               onChange={ this.handleChange }
             />
-          </label>
-          <label htmlFor="checkout-address">
-            Endereço
+          </div>
+          <div className="col-md-12">
+            <label className="form-label checkout-textbold" htmlFor="checkout-address">
+              Endereço
+            </label>
             <input
+              placeholder="Endereço"
+              className="form-control"
               id="checkout-address"
               data-testid="checkout-address"
               type="text"
@@ -128,12 +153,13 @@ class FormCheckout extends React.Component {
               value={ address }
               onChange={ this.handleChange }
             />
-          </label>
-        </fieldset>
-        <fieldset>
-          <legend>Método de Pagamento</legend>
-          <label htmlFor="ticket-payment">
+          </div>
+        </form>
+        <form>
+          <legend className="legend-checkout">Método de Pagamento</legend>
+          <div className="form-check form-check-inline">
             <input
+              className="form-check-input"
               id="ticket-payment"
               data-testid="ticket-payment"
               type="radio"
@@ -141,10 +167,13 @@ class FormCheckout extends React.Component {
               value="boleto"
               onChange={ this.handleChange }
             />
-            Boleto
-          </label>
-          <label htmlFor="visa-payment">
+            <label className="form-check-label checkout-textbold" htmlFor="ticket-payment">
+              Boleto
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
             <input
+              className="form-check-input"
               id="visa-payment"
               data-testid="visa-payment"
               type="radio"
@@ -152,10 +181,13 @@ class FormCheckout extends React.Component {
               value="visa"
               onChange={ this.handleChange }
             />
-            Visa
-          </label>
-          <label htmlFor="master-payment">
+            <label className="form-check-label checkout-textbold" htmlFor="visa-payment">
+              Visa
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
             <input
+              className="form-check-input"
               id="master-payment"
               data-testid="master-payment"
               type="radio"
@@ -163,10 +195,13 @@ class FormCheckout extends React.Component {
               value="mastercard"
               onChange={ this.handleChange }
             />
-            MasterCard
-          </label>
-          <label htmlFor="elo-payment">
+            <label className="form-check-label checkout-textbold" htmlFor="master-payment">
+              MasterCard
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
             <input
+              className="form-check-input"
               id="elo-payment"
               data-testid="elo-payment"
               type="radio"
@@ -174,10 +209,13 @@ class FormCheckout extends React.Component {
               value="elo"
               onChange={ this.handleChange }
             />
-            Elo
-          </label>
-        </fieldset>
+            <label className="form-check-label checkout-textbold" htmlFor="elo-payment">
+              Elo
+            </label>
+          </div>
+        </form>
         <button
+          className="btn btn-outline-light btn-submit-form"
           data-testid="checkout-btn"
           type="button"
           onClick={ this.onClick }
@@ -186,7 +224,7 @@ class FormCheckout extends React.Component {
         </button>
         {
           errorMsg ? (
-            <p data-testid="error-msg">Campos inválidos</p>
+            <p className="checkout-error" data-testid="error-msg">Campos inválidos</p>
           ) : null
         }
         { succeeded ? (<Redirect to="/" />) : ('') }

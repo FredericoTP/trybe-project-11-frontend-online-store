@@ -1,0 +1,26 @@
+.form-checkout {
+  background-color: black;
+  border-radius: 7px;
+  margin: 10px auto 30px;
+  padding: 15px;
+  width: 90%;
+}
+
+.legend-checkout {
+  color: white;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  margin: 16px 0 8px;
+}
+
+.checkout-textbold {
+  color: white;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+}
+
+.checkout-error {
+  color: orange;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+}

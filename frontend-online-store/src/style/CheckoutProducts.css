@@ -1,0 +1,36 @@
+.check-product-container {
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+}
+
+.check-product-title-image {
+  align-items: center;
+  display: flex;
+  width: 40%;
+}
+
+.check-product-title {
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  max-width: 250px;
+}
+
+.check-product-price {
+  display: flex;
+  flex-direction: column;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  justify-content: space-evenly;
+  padding: 0 0 0 10px;
+  width: 30%;
+}
+
+.check-product-totalprice {
+  align-items: center;
+  display: flex;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  justify-content: flex-start;
+  width: 30%;
+}
