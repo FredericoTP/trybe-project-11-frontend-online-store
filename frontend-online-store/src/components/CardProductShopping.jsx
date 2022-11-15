@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../style/CardProductShopping.css';
 
 class CardProductShopping extends React.Component {
   constructor() {
@@ -41,8 +42,8 @@ class CardProductShopping extends React.Component {
   }
 
   onClickDecrease = () => {
-    const { item } = this.props;
-    const { id, thumbnail, title, price } = item;
+    const { item, countItensIncreaseDecrease } = this.props;
+    const { id, thumbnail, title, price, availableQuantity } = item;
     this.setState((prevState) => ({
       cart: {
         id,
@@ -50,14 +51,16 @@ class CardProductShopping extends React.Component {
         title,
         price,
         quantity: prevState.cart.quantity - 1,
+        availableQuantity,
       },
       itemQuantity: prevState.itemQuantity - 1,
     }));
+    countItensIncreaseDecrease('decrease')
   };
 
   onClickIncrease = () => {
     const { itemQuantity } = this.state;
-    const { item } = this.props;
+    const { item, countItensIncreaseDecrease } = this.props;
     const { id, thumbnail, title, price, availableQuantity } = item;
     if (itemQuantity < availableQuantity) {
       this.setState((prevState) => ({
@@ -67,9 +70,11 @@ class CardProductShopping extends React.Component {
           title,
           price,
           quantity: prevState.cart.quantity + 1,
+          availableQuantity,
         },
         itemQuantity: prevState.itemQuantity + 1,
       }));
+      countItensIncreaseDecrease('increase')
     }
   };
 
@@ -94,37 +99,58 @@ class CardProductShopping extends React.Component {
     const { price, thumbnail, title } = item;
 
     return (
-      <div>
-        <img src={ thumbnail } alt={ title } />
-        <p data-testid="shopping-cart-product-name">{ title }</p>
-        <button
-          data-testid="product-decrease-quantity"
-          type="button"
-          onClick={ this.onClickDecrease }
-          disabled={ itemQuantity === 1 }
-        >
-          Diminuir
-        </button>
-        <p data-testid="shopping-cart-product-quantity">{ itemQuantity }</p>
-        <button
-          data-testid="product-increase-quantity"
-          type="button"
-          onClick={ this.onClickIncrease }
-        >
-          Aumentar
-        </button>
-        <p>
-          R$
-          { ' ' }
-          { price }
-        </p>
-        <button
-          data-testid="remove-product"
-          type="button"
-          onClick={ this.onClickRemove }
-        >
-          Remover Produto
-        </button>
+      <div className="card-shopping-container">
+        <div className="card-shopping-img-title">
+          <img src={ thumbnail } alt={ title } />
+          <p
+            className="shopping-cart-textbold"
+            data-testid="shopping-cart-product-name"
+          >
+            { title }
+          </p>
+        </div>
+        <div className="card-shopping-quantity">
+          <div>
+            <p className="shopping-cart-textbold">Quantidade:</p>
+          </div>
+          <div className="card-shopping-quantity-change">
+            <button
+              className="btn btn-outline-dark quantity-btn"
+              data-testid="product-decrease-quantity"
+              type="button"
+              onClick={ this.onClickDecrease }
+              disabled={ itemQuantity === 1 }
+            >
+              -
+            </button>
+            <p data-testid="shopping-cart-product-quantity">{ itemQuantity }</p>
+            <button
+              className="btn btn-outline-dark quantity-btn"
+              data-testid="product-increase-quantity"
+              type="button"
+              onClick={ this.onClickIncrease }
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div className="shopping-cart-price">
+          <p className="shopping-cart-textbold">
+            R$
+            { ' ' }
+            { (price * itemQuantity).toFixed(2) }
+          </p>
+        </div>
+        <div className="shopping-cart-remove">
+          <button
+            className="btn btn-outline-dark shopping-cart-textbold"
+            data-testid="remove-product"
+            type="button"
+            onClick={ this.onClickRemove }
+          >
+            Remover Produto
+          </button>
+        </div>
       </div>
     );
   }
@@ -140,6 +166,7 @@ CardProductShopping.propTypes = {
     availableQuantity: PropTypes.number,
   }).isRequired,
   updateComponent: PropTypes.func.isRequired,
+  countItensIncreaseDecrease: PropTypes.func.isRequired,
 };
 
 export default CardProductShopping;

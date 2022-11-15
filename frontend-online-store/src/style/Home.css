@@ -1,0 +1,44 @@
+.home-container {
+  background-color: rgb(150, 150, 150);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.home-content {
+  display: flex;
+}
+
+.home-categories {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.home-categories h3 {
+  align-self: center;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+.home-btn-categories {
+  background-color: white;
+  color: black;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.home-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+}
+
+.product-container-home {
+  margin: 10px;
+}

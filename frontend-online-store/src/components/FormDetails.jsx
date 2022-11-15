@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../style/FormDetails.css';
 
 class FormDetail extends React.Component {
   constructor() {
@@ -73,10 +74,10 @@ class FormDetail extends React.Component {
     const { comentarios } = this.state;
 
     const cards = comentarios.map((e, i) => (
-      <div key={ `${e.email}${i}` }>
-        <h4 data-testid="review-card-email">{e.email}</h4>
-        <p data-testid="review-card-rating">{e.rating}</p>
-        <p data-testid="review-card-evaluation">{e.text}</p>
+      <div className="form-ratings" key={ `${e.email}${i}` }>
+        <h4 className="form-ratings-textbold" data-testid="review-card-email">{e.email}</h4>
+        <p className="form-ratings-textbold" data-testid="review-card-rating">Avaliação:{ ' ' }{e.rating}</p>
+        <p className="form-ratings-textbold" data-testid="review-card-evaluation">{e.text}</p>
       </div>
     ));
 
@@ -86,101 +87,132 @@ class FormDetail extends React.Component {
   render() {
     const { email, comment, errorCheck, comentarios } = this.state;
     return (
-      <div>
-        <label htmlFor="inputEmail">
-          Email:
-          <input
-            type="text"
-            name="email"
-            value={ email }
-            data-testid="product-detail-email"
-            onChange={ this.handleChange }
-          />
-          <br />
-        </label>
-        <label htmlFor="inputComment">
-          Mensagem:
-          <textarea
-            name="comment"
-            value={ comment }
-            data-testid="product-detail-evaluation"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <p>
-          Como você avalia o Produto?
-        </p>
-        <label htmlFor="nota1">
-          <input
-            type="radio"
-            name="rate"
-            value="1"
-            id="nota1"
-            data-testid="1-rating"
-            onChange={ this.handleChange }
-          />
-          1
-        </label>
-        <label htmlFor="nota2">
-          <input
-            type="radio"
-            name="rate"
-            value="2"
-            id="nota2"
-            data-testid="2-rating"
-            onChange={ this.handleChange }
-          />
-          2
-        </label>
-        <label htmlFor="nota3">
-          <input
-            type="radio"
-            name="rate"
-            value="3"
-            id="nota3"
-            data-testid="3-rating"
-            onChange={ this.handleChange }
-          />
-          3
-        </label>
-        <label htmlFor="nota4">
-          <input
-            type="radio"
-            name="rate"
-            value="4"
-            id="nota4"
-            data-testid="4-rating"
-            onChange={ this.handleChange }
-          />
-          4
-        </label>
-        <label htmlFor="nota5">
-          <input
-            type="radio"
-            name="rate"
-            value="5"
-            id="nota5"
-            data-testid="5-rating"
-            onChange={ this.handleChange }
-          />
-          5
-          <br />
-        </label>
-
-        <button
-          type="button"
-          data-testid="submit-review-btn"
-          onClick={ this.submitButton }
-        >
-          Submit
-        </button>
-
-        { (errorCheck)
-          ? (<span data-testid="error-msg">Campos inválidos</span>) : ('') }
-
-        {
-          (comentarios.length > 0) ? (this.criacaoComentarios()) : ('')
-        }
+      <div className="form-details">
+        <div className="form-details-content">
+          <h4 className="form-details-textbold">Faça sua avaliação do produto:</h4>
+          <div className="mb-3">
+            <label htmlFor="inputEmail" className="form-label form-details-textbold">
+              Email:
+            </label>
+            <input
+              className="form-control"
+              placeholder="email"
+              type="text"
+              name="email"
+              value={ email }
+              data-testid="product-detail-email"
+              onChange={ this.handleChange }
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="inputComment" className="form-label form-details-textbold">
+              Mensagem:
+            </label>
+            <textarea
+              className="form-control form-details-textarea"
+              placeholder="Mensagem"
+              name="comment"
+              value={ comment }
+              data-testid="product-detail-evaluation"
+              onChange={ this.handleChange }
+            />
+          </div>
+          <h5 className="form-details-textbold">
+              Como você avalia o Produto?
+          </h5>
+          <div className="form-details-radio">
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="rate"
+                value="1"
+                id="nota1"
+                data-testid="1-rating"
+                onChange={ this.handleChange }
+              />
+              <label htmlFor="nota1" className="form-check-label form-details-textbold">
+                1
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="rate"
+                value="2"
+                id="nota2"
+                data-testid="2-rating"
+                onChange={ this.handleChange }
+              />
+              <label htmlFor="nota2" className="form-check-label form-details-textbold">
+                2
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="rate"
+                value="3"
+                id="nota3"
+                data-testid="3-rating"
+                onChange={ this.handleChange }
+              />
+              <label htmlFor="nota3" className="form-check-label form-details-textbold">
+                3
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="rate"
+                value="4"
+                id="nota4"
+                data-testid="4-rating"
+                onChange={ this.handleChange }
+              />
+              <label htmlFor="nota4" className="form-check-label form-details-textbold">
+                4
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="radio"
+                name="rate"
+                value="5"
+                id="nota5"
+                data-testid="5-rating"
+                onChange={ this.handleChange }
+              />
+              <label htmlFor="nota5" className="form-check-label form-details-textbold">
+                5
+              </label>
+            </div>
+          </div>
+          <button
+            className="btn btn-outline-light btn-submit-form"
+            type="button"
+            data-testid="submit-review-btn"
+            onClick={ this.submitButton }
+          >
+            Enviar
+          </button>
+          { (errorCheck)
+            ? (<span className="span-form" data-testid="error-msg">Campos inválidos</span>) : ('')
+          }
+          <div className="form-coments">
+            {
+              (comentarios.length > 0) 
+              ? (<div>
+                <h4 className="form-details-textbold">Avaliações:</h4>
+                {this.criacaoComentarios()}
+              </div>) : ('')
+            }
+          </div>
+        </div>
       </div>
     );
   }

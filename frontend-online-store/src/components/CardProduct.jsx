@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import '../style/CardProduct.css'
+import free from '../images/free.png'
 
 class CardProduct extends React.Component {
   onClick = () => {
@@ -28,32 +30,49 @@ class CardProduct extends React.Component {
   render() {
     const { id, price, thumbnail, title, shipping } = this.props;
     return (
-      <div data-testid="product">
-        <img src={ thumbnail } alt={ title } />
-        <p>{ title }</p>
-        <p>
-          R$
-          {' '}
-          { price }
-        </p>
-        {
-          shipping ? (
-            <p data-testid="free-shipping">Frete Grátis</p>
-          ) : null
-        }
-        <Link
-          data-testid="product-detail-link"
-          to={ `/productdetails/${id}` }
-        >
-          Detalhes
-        </Link>
-        <button
-          data-testid="product-add-to-cart"
-          type="button"
-          onClick={ this.onClick }
-        >
-          Adicionar ao Carrinho
-        </button>
+      <div data-testid="product" className="card product-container">
+        <img
+          className="card-img-top product-image"
+          src={ thumbnail }
+          alt={ title }
+        />
+        <div className="card-body name-price">
+          <p className="text-name-product-bold">{ title }</p>
+          <div className="price-free-shipping">
+            <p className="text-name-product">
+              R$
+              {' '}
+              { price }
+            </p>
+            {
+              shipping ? (
+                <img
+                  className="img-free-shipping"
+                  src={ free }
+                  alt="frete grátis"
+                  data-testid="free-shipping"
+                />
+              ) : null
+            }
+          </div>
+        </div>
+        <div className="card-body product-btns">
+          <Link
+            className="btn btn-outline-dark"
+            data-testid="product-detail-link"
+            to={ `/productdetails/${id}` }
+          >
+            Detalhes
+          </Link>
+          <button
+            className="btn btn-outline-dark"
+            data-testid="product-add-to-cart"
+            type="button"
+            onClick={ this.onClick }
+          >
+            Adicionar ao Carrinho
+          </button>
+        </div>
       </div>
     );
   }

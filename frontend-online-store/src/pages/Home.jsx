@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import CardProduct from '../components/CardProduct';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
+import '../style/Home.css';
 
 class Home extends React.Component {
   constructor() {
@@ -84,68 +85,65 @@ class Home extends React.Component {
   render() {
     const { categories, inputSearch, returnQuery, findReturnQuery, count } = this.state;
     return (
-      <div>
+      <div className="home-container">
         <Header
           inputSearch={ inputSearch }
           handleChange={ this.handleChange }
           onClick={ this.onClick }
           count={ count }
         />
-        <div>
-          {
-            categories.map((category) => {
-              const { id, name } = category;
-              return (
-                <div key={ id }>
-                  <button
-                    data-testid="category"
-                    type="button"
-                    onClick={ this.onClickCategories }
-                    value={ id }
-                  >
-                    { name }
-                  </button>
-                </div>
-              );
-            })
-          }
-        </div>
-        <div>
-          <p
-            data-testid="home-initial-message"
-          >
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-        </div>
-        <div>
-          {
-            findReturnQuery ? (<p>Nenhum produto foi encontrado</p>)
-              : (
-                returnQuery.map((product) => {
-                  const {
-                    id,
-                    price,
-                    thumbnail,
-                    title,
-                    available_quantity: availableQuantity,
-                    shipping,
-                  } = product;
-                  return (
-                    <div key={ `${id}${title}` }>
-                      <CardProduct
-                        id={ id }
-                        price={ price }
-                        thumbnail={ thumbnail }
-                        title={ title }
-                        countItens={ this.countItens }
-                        availableQuantity={ availableQuantity }
-                        shipping={ shipping.free_shipping }
-                      />
-                    </div>
-                  );
-                })
-              )
-          }
+        <div className="home-content">
+          <div className="home-categories">
+            <h3>Categorias</h3>
+            {
+              categories.map((category) => {
+                const { id, name } = category;
+                return (
+                  <div key={ id }>
+                    <button
+                      className="btn btn-outline-secondary home-btn-categories"
+                      data-testid="category"
+                      type="button"
+                      onClick={ this.onClickCategories }
+                      value={ id }
+                    >
+                      { name }
+                    </button>
+                  </div>
+                );
+              })
+            }
+          </div>
+          <div className="home-products">
+            {
+              findReturnQuery ? (<p>Nenhum produto foi encontrado</p>)
+                : (
+                  returnQuery.map((product) => {
+                    const {
+                      id,
+                      price,
+                      thumbnail,
+                      title,
+                      available_quantity: availableQuantity,
+                      shipping,
+                    } = product;
+                    return (
+                      <div className="product-container-home" key={ `${id}${title}` }>
+                        <CardProduct
+                          id={ id }
+                          price={ price }
+                          thumbnail={ thumbnail }
+                          title={ title }
+                          countItens={ this.countItens }
+                          availableQuantity={ availableQuantity }
+                          shipping={ shipping.free_shipping }
+                        />
+                      </div>
+                    );
+                  })
+                )
+            }
+          </div>
         </div>
       </div>
     );

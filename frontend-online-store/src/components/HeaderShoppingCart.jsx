@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import '../style/HeaderDetails.css';
 import cartImage from '../images/cart-shopping.png'
 
-class HeaderDetails extends React.Component {
+class HeaderShoppingCart extends React.Component {
   render() {
     const { count } = this.props;
     return (
@@ -21,7 +21,7 @@ class HeaderDetails extends React.Component {
           </Link>
         </div>
         <div className="header-details-h3">
-          <h3>Detalhes do Produto</h3>
+          <h3>Carrinho de Compras</h3>
         </div>
         <div className="header-details-cart-container">
           <Link
@@ -43,8 +43,8 @@ class HeaderDetails extends React.Component {
   }
 }
 
-HeaderDetails.propTypes = {
+HeaderShoppingCart.propTypes = {
   count: PropTypes.number.isRequired,
 };
 
-export default HeaderDetails;
+export default HeaderShoppingCart;
