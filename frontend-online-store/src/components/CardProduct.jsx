@@ -50,7 +50,8 @@ class CardProduct extends React.Component {
                   className="img-free-shipping"
                   src={ free }
                   alt="frete grátis"
-                  data-testid="free-shipping" />
+                  data-testid="free-shipping"
+                />
               ) : null
             }
           </div>

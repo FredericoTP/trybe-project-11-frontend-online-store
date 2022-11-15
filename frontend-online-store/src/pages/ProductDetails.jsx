@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { getProductById } from '../services/api';
 import HeaderDetails from '../components/HeaderDetails';
 import FormDetails from '../components/FormDetails';
+import '../style/ProductDetails.css';
+import free from '../images/free.png'
 
 class ProductDetails extends React.Component {
   constructor() {
@@ -76,42 +78,71 @@ class ProductDetails extends React.Component {
     const { title, price, warranty, shipping } = productResult;
     if (loading) {
       return (
-        <div>
-          <HeaderDetails count={ count } />
-          <p>Loading...</p>
+        <div className="details-loading-container">
+          <div className="details-loading-header">
+            <HeaderDetails count={ count } />
+          </div>
+          <div className="details-loading">
+            <div className="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </div>
       );
     }
     return (
-      <div>
+      <div className="details-container">
         <HeaderDetails count={ count } />
-        <div>
-          <img
-            data-testid="product-detail-image"
-            src={ picture }
-            alt={ title }
-          />
-          <p data-testid="product-detail-name">{ title }</p>
-          <p data-testid="product-detail-price">
-            R$
-            { ' ' }
-            { price }
-          </p>
-          {
-            shipping.free_shipping ? (
-              <p data-testid="free-shipping">Frete Grátis</p>
-            ) : null
-          }
-          <p>{ warranty }</p>
-          <button
-            data-testid="product-detail-add-to-cart"
-            type="button"
-            onClick={ this.onClick }
-          >
-            Adicionar ao Carrinho
-          </button>
+        <div className="card mb-3 details-card">
+          <div className="row g-0">
+            <div className="col-md-4 details-align-image">
+              <img
+                className="img-fluid rounded-start details-img-product"
+                data-testid="product-detail-image"
+                src={ picture }
+                alt={ title }
+              />
+            </div>
+            <div className="col-md-8 details-product-details">
+              <div className="card-body">
+                <p
+                  className="card-title details-text-change"
+                  data-testid="product-detail-name"
+                >
+                  { title }
+                </p>
+                  <p
+                    className="card-title details-text-change"
+                    data-testid="product-detail-price"
+                  >
+                    R$
+                    { ' ' }
+                    { price }
+                  </p>
+                  {
+                    shipping.free_shipping ? (
+                      <img
+                        className="img-free-shipping"
+                        src={ free }
+                        alt="frete grátis"
+                        data-testid="free-shipping"
+                      />
+                    ) : null
+                  }
+                  <p className="card-title details-text-change">{ warranty }</p>
+                  <button
+                    className="btn btn-outline-dark details-text-change"
+                    data-testid="product-detail-add-to-cart"
+                    type="button"
+                    onClick={ this.onClick }
+                  >
+                    Adicionar ao Carrinho
+                  </button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
+        <div className="details-form">
           <FormDetails
             id={ id }
           />
