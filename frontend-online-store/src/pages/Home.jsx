@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header';
 import CardProduct from '../components/CardProduct';
+import Footer from '../components/Footer';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 import '../style/Home.css';
 
@@ -145,6 +146,7 @@ class Home extends React.Component {
             }
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

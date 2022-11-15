@@ -42,7 +42,7 @@ class CardProduct extends React.Component {
             <p className="text-name-product">
               R$
               {' '}
-              { price.toFixed(2) }
+              { (price > 0) ? (price.toFixed(2)) : 0 }
             </p>
             {
               shipping ? (

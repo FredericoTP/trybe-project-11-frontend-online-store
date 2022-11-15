@@ -2,6 +2,7 @@ import React from 'react';
 import CheckoutProducts from '../components/CheckoutProducts';
 import FormCheckout from '../components/FormCheckout';
 import HeaderCheckout from '../components/HeaderCheckout';
+import Footer from '../components/Footer';
 import '../style/Checkout.css';
 
 class Checkout extends React.Component {
@@ -82,6 +83,7 @@ class Checkout extends React.Component {
         <div>
           <FormCheckout />
         </div>
+        <Footer />
       </div>
     );
   }

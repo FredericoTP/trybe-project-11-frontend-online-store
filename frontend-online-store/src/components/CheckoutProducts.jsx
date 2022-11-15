@@ -28,7 +28,7 @@ class CheckoutProducts extends React.Component {
                     { ' ' }
                     R$
                     { ' ' }
-                    { price.toFixed(2) }
+                    { (price > 0) ? (price.toFixed(2)) : 0 }
                   </p>
                   <p>
                     Quantidade:

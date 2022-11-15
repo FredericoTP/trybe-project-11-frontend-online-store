@@ -1,0 +1,13 @@
+.footer-container {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-text {
+  color: white;
+  font-family: Nunito, sans-serif;
+  font-weight: 700;
+  padding: 10px;
+}

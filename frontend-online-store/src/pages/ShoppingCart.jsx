@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CardProductShopping from '../components/CardProductShopping';
 import HeaderShoppingCart from '../components/HeaderShoppingCart';
+import Footer from '../components/Footer';
 import '../style/ShoppingCart.css'
 
 class ShoppingCart extends React.Component {
@@ -124,6 +125,9 @@ class ShoppingCart extends React.Component {
                 </Link>
               )
           }
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     );

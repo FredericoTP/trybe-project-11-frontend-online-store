@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getProductById } from '../services/api';
 import HeaderDetails from '../components/HeaderDetails';
 import FormDetails from '../components/FormDetails';
+import Footer from '../components/Footer';
 import '../style/ProductDetails.css';
 import free from '../images/free.png'
 
@@ -117,7 +118,7 @@ class ProductDetails extends React.Component {
                   >
                     R$
                     { ' ' }
-                    { price.toFixed(2) }
+                    { (price > 0) ? (price.toFixed(2)) : 0 }
                   </p>
                   {
                     shipping.free_shipping ? (
@@ -147,6 +148,7 @@ class ProductDetails extends React.Component {
             id={ id }
           />
         </div>
+        <Footer />
       </div>
     );
   }
