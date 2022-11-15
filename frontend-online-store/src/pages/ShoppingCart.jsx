@@ -82,26 +82,26 @@ class ShoppingCart extends React.Component {
     return (
       <div className="cart-container">
         <HeaderShoppingCart count={ count } />
-        <div className="cart-product-container">
-          {
-            (itens.length > 0)
-              ? (
-                itens.map((item) => (
+        {
+          (itens.length > 0) 
+            ? (
+              <div className="cart-product-container">
+                {itens.map((item) => (
                   <CardProductShopping
                     key={ item.id }
                     item={ item }
                     updateComponent={ this.updateComponent }
                     countItensIncreaseDecrease={ this.countItensIncreaseDecrease }
                   />
-                ))
-              )
-              : (<h2
-                  className="shopping-cart-empty-message"
-                  data-testid="shopping-cart-empty-message">
-                    Seu carrinho está vazio!
-                  </h2>)
-          }
-        </div>
+                ))}
+              </div>
+            ) 
+            : (
+              <h2 className="shopping-cart-empty-message" data-testid="shopping-cart-empty-message">
+                Seu carrinho está vazio!
+              </h2>
+            )
+        }
         <div className="shopping-checkout">
           {
             (itens.length > 0) 

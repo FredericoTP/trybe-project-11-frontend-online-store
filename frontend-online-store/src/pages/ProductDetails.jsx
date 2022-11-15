@@ -117,7 +117,7 @@ class ProductDetails extends React.Component {
                   >
                     R$
                     { ' ' }
-                    { price }
+                    { price.toFixed(2) }
                   </p>
                   {
                     shipping.free_shipping ? (

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../style/CheckoutProducts.css'
 
 class CheckoutProducts extends React.Component {
   render() {
@@ -16,28 +17,34 @@ class CheckoutProducts extends React.Component {
           cartItens.map((item) => {
             const { id, thumbnail, title, price, quantity } = item;
             return (
-              <div key={ id }>
-                <img src={ thumbnail } alt={ title } />
-                <p>{ title }</p>
-                <p>
-                  Preço unitário:
-                  { ' ' }
-                  R$
-                  { ' ' }
-                  { price }
-                </p>
-                <p>
-                  Quantidade:
-                  { ' ' }
-                  { quantity }
-                </p>
-                <p>
-                  Total do produto:
-                  { ' ' }
-                  R$
-                  { ' ' }
-                  {(price * quantity).toFixed(2)}
-                </p>
+              <div className="check-product-container" key={ id }>
+                <div className="check-product-title-image">
+                  <img src={ thumbnail } alt={ title } />
+                  <p className="check-product-title">{ title }</p>
+                </div>
+                <div className="check-product-price">
+                  <p>
+                    Preço unitário:
+                    { ' ' }
+                    R$
+                    { ' ' }
+                    { price.toFixed(2) }
+                  </p>
+                  <p>
+                    Quantidade:
+                    { ' ' }
+                    { quantity }
+                  </p>
+                </div>
+                <div className="check-product-totalprice">
+                  <p>
+                    Total do produto:
+                    { ' ' }
+                    R$
+                    { ' ' }
+                    {(price * quantity).toFixed(2)}
+                  </p>
+                </div>
               </div>
             );
           })
