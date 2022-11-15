@@ -17,10 +17,11 @@
 }
 
 .details-container {
+  align-items: center;
   background-color: rgb(150, 150, 150);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   min-height: 100vh;
 }
 
