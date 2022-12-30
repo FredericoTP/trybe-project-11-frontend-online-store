@@ -377,6 +377,8 @@ Alguns produtos possuem o frete grátis. Adicione essa informação nesses produ
 
 ## 100% :heavy_check_mark:
 
+![Project-FrontEnd-Online-Store-Grade](https://github.com/FredericoTP/trybe-project-11-frontend-online-store/blob/main/images/frontend-online-store-grade.png?raw=true)
+
 <br />
 
 ## 3- Preview
