@@ -5,7 +5,6 @@
 
 .product-image {
   margin: 5px auto 0;
-
   width: 150px;
 }
 
@@ -39,4 +38,37 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+@media screen and ( max-width : 600px ) {
+  .product-container {
+    width: 8rem;
+  }
+
+  .product-image {
+    width: 60px;
+  }
+
+  .name-price {
+    padding: 0 5px;
+  }
+
+  .text-name-product-bold, .text-name-product {
+    font-size: 10px;
+  }
+
+  .img-free-shipping {
+    width: 30px;
+  }
+
+  .product-btns {
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+    margin: 0 0 10px;
+  }
+
+  .product-btns a, .product-btns button {
+    font-size: 10px;
+  }
 }

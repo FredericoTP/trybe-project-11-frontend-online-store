@@ -29,7 +29,6 @@
 }
 
 .btn-submit-form {
-  /* color: white; */
   font-family: Nunito, sans-serif;
   font-weight: 700;
   margin: 10px 0;
@@ -58,4 +57,10 @@
   font-weight: 700;
   padding: 10px;
   word-wrap: break-word;
+}
+
+@media screen and ( max-width : 540px ) {
+  .form-details {
+    width: 90%;
+  }
 }

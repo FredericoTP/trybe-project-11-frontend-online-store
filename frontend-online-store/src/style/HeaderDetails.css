@@ -78,3 +78,41 @@
   top: 20px;
   width: 30px;
 }
+
+@media screen and ( max-width : 555px ) {
+  .header-details-component {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .header-details-title-container {
+    width: fit-content;
+  }
+
+  .header-details-title {
+    font-size: 15px;
+  }
+
+  .header-detail-home {
+    width: fit-content;
+    margin: 0 5px;
+  }
+
+  .header-detail-home a {
+    font-size: 10px;
+  }
+
+  .header-details-h3 {
+    width: fit-content;
+    margin: 5px;
+  }
+
+  .header-details-h3 h3 {
+    font-size: 15px;
+  }
+
+  .header-details-cart-container {
+    width: fit-content;
+  }
+}
