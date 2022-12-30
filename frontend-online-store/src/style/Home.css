@@ -43,3 +43,17 @@
 .product-container-home {
   margin: 10px;
 }
+
+@media screen and ( max-width : 600px ) {
+  .home-categories {
+    padding: 5px;
+  }
+
+  .home-categories h3 {
+    font-size: 15px;
+  }
+
+  .home-btn-categories {
+    font-size: 10px;
+  }
+}

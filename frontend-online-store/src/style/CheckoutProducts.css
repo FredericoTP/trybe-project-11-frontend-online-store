@@ -34,3 +34,43 @@
   justify-content: flex-start;
   width: 30%;
 }
+
+@media screen and ( max-width : 855px ) {
+  .check-product-container {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .check-product-title, .check-product-price p, .check-product-totalprice {
+    font-size: 10px;
+  }
+
+  .check-product-price, .check-product-totalprice {
+    width: fit-content;
+  }
+
+  .total-value-checkout {
+    font-size: 20px;
+  }
+}
+
+@media screen and ( max-width : 540px ) {
+  .check-product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .check-product-title {
+    width: fit-content;
+  }
+
+  .check-product-price {
+    padding: 0;
+  }
+
+  .check-product-title-image, .check-product-price, .check-product-totalprice {
+    width: fit-content;
+    margin: 5px;
+  }
+}

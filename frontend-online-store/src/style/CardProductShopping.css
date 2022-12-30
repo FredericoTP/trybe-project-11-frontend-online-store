@@ -80,3 +80,56 @@
   margin: 30px 0;
   text-align: center;
 }
+
+@media screen and ( max-width : 855px ) {
+
+  .card-shopping-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card-shopping-img-title img {
+    width: 50px;
+  }
+  
+  .card-shopping-img-title p {
+    text-align: center;
+    font-size: 10px;
+  }
+
+  .shopping-cart-textbold {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .quantity-btn {
+    height: 30px;
+    width: 30px;
+    font-size: 10px;
+  }
+
+  .card-shopping-quantity-change p {
+    font-size: 10px;
+  }
+
+  .shopping-cart-remove button {
+    font-size: 10px;
+  }
+}
+
+@media screen and ( max-width : 460px ) {
+  
+  .card-shopping-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-shopping-img-title, .card-shopping-quantity, .shopping-cart-price {
+    width: 100%;
+    margin: 0 0 10px;
+  }
+
+  .shopping-cart-remove {
+    width: 90%;
+  }
+}

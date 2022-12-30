@@ -67,3 +67,27 @@
   top: 20px;
   width: 30px;
 }
+
+@media screen and ( max-width : 600px ) {
+  .header-component {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+  .header-title-container, .header-search-container, .header-cart-container {
+    width: fit-content;
+  }
+
+  .header-cart-container {
+    margin: 0 0 10px 30px;
+  }
+
+  .header-title {
+    font-size: 15px;
+  } 
+
+  .header-text {
+    font-size: 10px;
+  }
+}
