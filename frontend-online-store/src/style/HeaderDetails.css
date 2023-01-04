@@ -114,5 +114,6 @@
 
   .header-details-cart-container {
     width: fit-content;
+    margin: 0 0 10px;
   }
 }
