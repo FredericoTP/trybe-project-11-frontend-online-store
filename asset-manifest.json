@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/project-frontend-online-store/static/css/main.b0b3b4c1.css",
-    "main.js": "/project-frontend-online-store/static/js/main.73398d0f.js",
-    "static/media/free.png": "/project-frontend-online-store/static/media/free.530a85be5a8bdabab92b.png",
-    "index.html": "/project-frontend-online-store/index.html",
-    "main.b0b3b4c1.css.map": "/project-frontend-online-store/static/css/main.b0b3b4c1.css.map",
-    "main.73398d0f.js.map": "/project-frontend-online-store/static/js/main.73398d0f.js.map"
+    "main.css": "/trybe-project-11-frontend-online-store/static/css/main.3ea8ed90.css",
+    "main.js": "/trybe-project-11-frontend-online-store/static/js/main.277a320b.js",
+    "static/media/free.png": "/trybe-project-11-frontend-online-store/static/media/free.530a85be5a8bdabab92b.png",
+    "index.html": "/trybe-project-11-frontend-online-store/index.html",
+    "main.3ea8ed90.css.map": "/trybe-project-11-frontend-online-store/static/css/main.3ea8ed90.css.map",
+    "main.277a320b.js.map": "/trybe-project-11-frontend-online-store/static/js/main.277a320b.js.map"
   },
   "entrypoints": [
-    "static/css/main.b0b3b4c1.css",
-    "static/js/main.73398d0f.js"
+    "static/css/main.3ea8ed90.css",
+    "static/js/main.277a320b.js"
   ]
 }
