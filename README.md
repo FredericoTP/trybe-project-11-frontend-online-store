@@ -1,5 +1,3 @@
-# :construction: README em construção ! :construction:
-
 # :computer: Trybe-11-Project-FrontEnd-Online-Store :computer:
 
 Nesse projeto foi desenvolvida uma versão simplificada de uma loja online sem persistência no banco de dados. A pessoa usuária pode:
@@ -15,7 +13,7 @@ O projeto foi feito em equipe e trabalhamos utilizando a metodologia Kanban. Mem
  - Nathalia Marana
  - Arthur Oldenburg
 
-# Acesse o projeto clicando [aqui]()! :green_heart:
+# Acesse o projeto clicando [aqui](https://fredericotp.github.io/trybe-project-11-frontend-online-store/)! :green_heart:
 
 <br />
 
@@ -382,3 +380,11 @@ Alguns produtos possuem o frete grátis. Adicione essa informação nesses produ
 <br />
 
 ## 3- Preview
+
+![Project-FrontEnd-Online-Store-Preview1](https://github.com/FredericoTP/trybe-project-11-frontend-online-store/blob/main/images/store-preview1.png?raw=true)
+<br />
+![Project-FrontEnd-Online-Store-Preview2](https://github.com/FredericoTP/trybe-project-11-frontend-online-store/blob/main/images/store-preview2.png?raw=true)
+<br />
+![Project-FrontEnd-Online-Store-Preview3](https://github.com/FredericoTP/trybe-project-11-frontend-online-store/blob/main/images/store-preview3.png?raw=true)
+<br />
+![Project-FrontEnd-Online-Store-Preview4](https://github.com/FredericoTP/trybe-project-11-frontend-online-store/blob/main/images/store-preview4.png?raw=true)
